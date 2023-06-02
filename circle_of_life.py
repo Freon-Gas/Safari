@@ -40,10 +40,6 @@ class CircleOfLife:
             lion_position = lion.lion_move(self.grid)
             if lion_position is not None:
                 lion_x, lion_y = lion_position
-            # if eaten_zebra:
-            #     will_be_gone_zebra = self.get_zebra_at_position(eaten_zebra[0], eaten_zebra[1])
-                # if will_be_gone_zebra:
-                #     self.manager.zebras.remove(will_be_gone_zebra)
                 if lion.starving_counter >= 3: 
                     self.manager.lions.remove(lion)
                     self.manager.num_lions -= 1
@@ -52,6 +48,8 @@ class CircleOfLife:
                     if zebra.x == lion_x and zebra.y == lion_y:
                         self.manager.zebras.remove(zebra)
                         self.manager.num_zebras -= 1
+            else:
+                lion.starving_counter += 1
 
                     
             
